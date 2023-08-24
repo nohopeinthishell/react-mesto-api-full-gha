@@ -28,8 +28,7 @@ mongoose
 const app = express();
 
 const allowedCors = [
-  'https://praktikum.tk',
-  'http://praktikum.tk',
+  'https://atlantizz.nomoredomainsicu.ru',
   'localhost:3000',
 ];
 
