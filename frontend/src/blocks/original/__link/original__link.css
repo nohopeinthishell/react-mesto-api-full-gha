@@ -1,0 +1,12 @@
+.original__link {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+  color: #fff;
+}
+
+.original__link:hover {
+  opacity: 0.6;
+}

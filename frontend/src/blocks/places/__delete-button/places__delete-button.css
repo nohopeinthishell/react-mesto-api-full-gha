@@ -1,0 +1,18 @@
+.places__delete-button {
+  background-image: url(../../../images/trash-button.png);
+  height: 18px;
+  width: 17px;
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 0;
+  position: absolute;
+  top: 21px;
+  right: 20px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.places__delete-button:hover {
+  opacity: 0.6;
+}

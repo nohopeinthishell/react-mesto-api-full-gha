@@ -1,0 +1,6 @@
+@media screen and (max-width: 900px) {
+  .header__hamburger-button_entered {
+    display: block;
+    margin-right: 30px;
+  }
+}

@@ -1,0 +1,10 @@
+.header__overlay {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 900px) {
+  .header__overlay {
+    margin-right: 27px;
+  }
+}
