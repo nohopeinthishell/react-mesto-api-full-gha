@@ -1,9 +1,0 @@
-.header__overlay_invisible {
-  display: flex;
-}
-
-@media screen and (max-width: 900px) {
-  .header__overlay_invisible {
-    display: none;
-  }
-}
