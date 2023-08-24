@@ -29,7 +29,7 @@ const app = express();
 
 const allowedCors = [
   'https://atlantizz.nomoredomainsicu.ru',
-  'localhost:3000',
+  'http://localhost:3000',
 ];
 
 app.use((req, res, next) => {
