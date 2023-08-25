@@ -2,11 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const auth = require('./middlewares/auth');
 const router = require('./routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
 
 const { PORT = 3000 } = process.env;
 
