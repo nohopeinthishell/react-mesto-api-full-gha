@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.167.83
+IP 84.201.167.83
 
 Frontend https://atlantizz.nomoredomainsicu.ru/
 
