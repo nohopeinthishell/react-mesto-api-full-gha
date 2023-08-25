@@ -1,0 +1,36 @@
+.original__input {
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0;
+  border: 0;
+  outline: none;
+  width: 358px;
+  margin-bottom: 30px;
+  padding-bottom: 13px;
+  background-color: #000;
+  border-bottom: 2px solid #ccc;
+}
+
+.original__input:last-of-type {
+  margin-bottom: 216px;
+}
+
+.original__input:-webkit-autofill,
+.original__input:-webkit-autofill:hover,
+.original__input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ccc;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+@media screen and (max-width: 900px) {
+  .original__input {
+    width: 260px;
+  }
+
+  .original__input:last-of-type {
+    margin-bottom: 173px;
+  }
+}

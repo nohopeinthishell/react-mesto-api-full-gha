@@ -1,0 +1,27 @@
+.original__button {
+  padding: 0;
+  margin: 0;
+  width: 358px;
+  height: 50px;
+  border-radius: 2px;
+  background: #fff;
+  border: 0;
+  background-size: cover;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  color: #000;
+  cursor: pointer;
+}
+
+.original__button:hover {
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 900px) {
+  .original__button {
+    font-size: 16px;
+    width: 260px;
+    height: 46px;
+  }
+}

@@ -1,0 +1,10 @@
+.popup__submit_inactive {
+  cursor: not-allowed;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: #fff;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.popup__submit_inactive:hover {
+  opacity: 1;
+}

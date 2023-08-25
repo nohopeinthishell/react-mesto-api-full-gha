@@ -1,0 +1,6 @@
+.header__hamburger-menu {
+  margin-top: 40px;
+  padding: 0 auto;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  display: none;
+}
