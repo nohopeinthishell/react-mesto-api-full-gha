@@ -1,3 +1,4 @@
+require('dotenv').config();
 const httpConstants = require('http2').constants;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -8,6 +9,7 @@ const ValidationError = require('../errors/validationError');
 const NotFoundError = require('../errors/notFoundError');
 const ConflictError = require('../errors/conflictError');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
 const salt = bcrypt.genSaltSync(10);
 
 const getUsers = (req, res, next) => userSchema
@@ -106,7 +108,7 @@ const login = (req, res, next) => {
         }
         const token = jwt.sign(
           { _id: user._id },
-          'some-secret-key',
+          NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
           { expiresIn: '7d' },
         );
         return res.status(httpConstants.HTTP_STATUS_OK).send({ token });
