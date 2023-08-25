@@ -5,6 +5,8 @@ const { errors } = require('celebrate');
 const auth = require('./middlewares/auth');
 const router = require('./routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 
 const { PORT = 3000 } = process.env;
 
@@ -15,6 +17,11 @@ const {
 const errorHandler = require('./middlewares/errror-handler');
 const { loginValidation, registerValidation } = require('./validation/validation');
 const NotFoundError = require('./errors/notFoundError');
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // за 15 минут
+  max: 100, // можно совершить максимум 100 запросов с одного IP
+});
 
 mongoose
   .connect('mongodb://127.0.0.1:27017/mestodb', {
@@ -51,6 +58,9 @@ app.use((req, res, next) => {
 
   return next();
 });
+
+app.use(helmet());
+app.use(limiter);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
