@@ -3,7 +3,7 @@ import { useForm } from "../hooks/useForm";
 import { useNavigate } from "react-router-dom";
 import * as auth from "../utils/Auth";
 
-function Login({ handleLogin, setInitialData }) {
+function Login({ handleLogin, setInitialData, onInfoTooltip }) {
   const { values, handleChange, setValues } = useForm({
     email: "",
     password: "",
@@ -27,7 +27,10 @@ function Login({ handleLogin, setInitialData }) {
           navigate("/", { replace: true });
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>{ 
+        onInfoTooltip(false);
+        console.log(err)
+      });
   };
 
   return (

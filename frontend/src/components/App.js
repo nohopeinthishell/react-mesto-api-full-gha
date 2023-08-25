@@ -52,23 +52,6 @@ function App() {
     .catch((err) => console.log(err));
   }
 
-  // React.useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   api
-  //     .getProfileInfo(token)
-  //     .then((profileInfo) => {
-  //       setCurrentUser(profileInfo);
-  //     })
-  //     .catch((err) => console.log(err));
-
-  //   api
-  //     .getInitialCards(token)
-  //     .then((initialCards) => {
-  //       setCurrentCards(initialCards);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
   function signOut() {
     localStorage.removeItem("token");
     setEmail("");
@@ -229,7 +212,7 @@ function App() {
               />
               <Route
                 path="/signin"
-                element={<Login handleLogin={handleLogin} setInitialData={setInitialData}/>}
+                element={<Login handleLogin={handleLogin} setInitialData={setInitialData} onInfoTooltip={handleInfoTooltipOpen}/>}
               />
             </Routes>
 
