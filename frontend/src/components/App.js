@@ -18,6 +18,7 @@ import Register from "./Register";
 import ProtectedRouteElement from "./ProtectedRoute";
 import InfoTooltip from "./InfoTooltip";
 import * as auth from "../utils/Auth";
+import DeleteCardPopup from "./DeleteCardPopup";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
@@ -27,6 +28,7 @@ function App() {
     React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
+  const [isDeletePopupOpen, setIsDeletePopupOpen] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [currentCards, setCurrentCards] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -81,8 +83,12 @@ function App() {
   }
 
   function handleCardClick(card) {
-
     setIsImagePopupOpen(true);
+    setSelectedCard(card);
+  }
+
+  function handleDeleteClick(card) {
+    setIsDeletePopupOpen(true);
     setSelectedCard(card);
   }
 
@@ -92,6 +98,7 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsImagePopupOpen(false);
     setIsInfoTooltipOpen(false);
+    setIsDeletePopupOpen(false);
   }
 
   function handleCardLike(card) {
@@ -108,15 +115,15 @@ function App() {
   }
   function handleCardDelete(card) {
     const token = localStorage.getItem("token");
-    console.log(card)
-    api
+    function makeRequest() {
+      return api
       .deleteCard(card._id, token)
       .then(() => {
         setCurrentCards((state) => 
         state.filter((item) => item._id !== card._id)
         );
-      })
-      .catch((err) => console.log(err));
+      })}
+      handleSubmit(makeRequest)
   }
 
   function handleUpdateUser(data) {
@@ -201,7 +208,7 @@ function App() {
                     onEditAvatar={handleEditAvatarClick}
                     onCardClick={handleCardClick}
                     onCardLike={handleCardLike}
-                    onCardDelete={handleCardDelete}
+                    onCardDelete={handleDeleteClick}
                     loggedIn={loggedIn}
                   />
                 }
@@ -230,7 +237,11 @@ function App() {
               onClose={closeAllPopups}
               onAddPlace={handleAddPlaceSubmit}
             />
-            <PopupWithForm name={"delete"} title={"Вы уверены?"} />
+            <DeleteCardPopup 
+             card={selectedCard}
+             isOpen={isDeletePopupOpen}
+             onDelete={handleCardDelete}
+            />
             <ImagePopup
               card={selectedCard}
               isOpen={isImagePopupOpen}

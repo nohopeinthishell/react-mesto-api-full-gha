@@ -12,6 +12,10 @@ function EditAvatarPopup({ isOpen, onUpdateAvatar }) {
     });
   }
 
+  React.useEffect(() => {
+    avatarRef.current.value = '';
+  }, [isOpen]);
+
   const { isLoading, closeAllPopups } = React.useContext(AppContext);
 
   return (

@@ -6,7 +6,6 @@ import { useForm } from "../hooks/useForm";
 function AddPlacePopup({ isOpen, onAddPlace }) {
   const { values, handleChange, setValues } = useForm({ name: "", link: "" });
   const { name, link } = values;
-
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -14,9 +13,13 @@ function AddPlacePopup({ isOpen, onAddPlace }) {
       name,
       link,
     });
+    
   }
-
   const { isLoading, closeAllPopups } = React.useContext(AppContext);
+
+  React.useEffect(() => {
+    setValues({ name: "", link: "" });
+  }, [isOpen]);
 
   return (
     <PopupWithForm
@@ -40,7 +43,7 @@ function AddPlacePopup({ isOpen, onAddPlace }) {
           minLength={2}
           maxLength={30}
         />
-        <span className="popup__input-error title-input-error" />
+        <span className={`popup__input-error title-input-error`}></span>
       </label>
       <label className="popup__label">
         <input

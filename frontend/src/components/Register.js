@@ -2,12 +2,13 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as auth from "../utils/Auth";
 import { useForm } from "../hooks/useForm";
+import validate from "../hooks/LoginFormValidationRules";
 
 function Register({ onInfoTooltip }) {
   const { values, handleChange, setValues } = useForm({
     email: "",
     password: "",
-  });
+  }, validate);
   const { email, password } = values;
   const navigate = useNavigate();
 
